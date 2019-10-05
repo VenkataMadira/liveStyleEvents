@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     final let url = URL(string: "https://my-json-server.typicode.com/livestyled/mock-api/events")
     private var events = [Event]()
     var favoriteEvents: [Event] = []
@@ -17,8 +17,11 @@ class ViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        tableView.delegate = self
+        tableView.dataSource = self
         downloadJson()
         tableView.tableFooterView = UIView()
+        
     }
     // MARK: -downloadJson Start
     func downloadJson() {
@@ -77,11 +80,14 @@ class ViewController: UIViewController, UITableViewDataSource {
         }
         // creating link between cell and view controller.. Pass data
         cell.link = self
-        if(UserDefaults.standard.bool(forKey:self.events[indexPath.row].id)){
-            cell.favouriteBtnPressed.setTitle("Favourite", for: .normal)
-        }else{
-            cell.favouriteBtnPressed.setTitle("UnFavourite", for: .normal)
-        }
+        if(self.events.count>0){
+            if(UserDefaults.standard.bool(forKey:self.events[indexPath.row].id)){
+                cell.favouriteBtnPressed.setTitle("Favourite", for: .normal)
+            }else{
+                cell.favouriteBtnPressed.setTitle("UnFavourite", for: .normal)
+            }
+        
+       
         
         //Eevent name preparetion
         cell.eventNameLbl.text = events[indexPath.row].title
@@ -102,7 +108,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         if let timeIntervel = self.events[indexPath.row].startDate as? Int64{
             cell.eventDateLbl.text = getDateString(time: Double(timeIntervel))
         }
-        
+        }
         return cell
         
     }
