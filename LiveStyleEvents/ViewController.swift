@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     final let url = URL(string: "https://my-json-server.typicode.com/livestyled/mock-api/events")
+    
     private var events = [Event]()
     var favoriteEvents: [Event] = []
     
@@ -20,9 +21,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.delegate = self
         tableView.dataSource = self
         downloadJson()
+       
         tableView.tableFooterView = UIView()
         
     }
+    
+    
     // MARK: -downloadJson Start
     func downloadJson() {
         let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
@@ -48,15 +52,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 for eventDownloaded in downloadedEvents{
                     self.events.append(Event(id: eventDownloaded.id, title: eventDownloaded.title, image: eventDownloaded.image, startDate: eventDownloaded.startDate))
                 }
-                
+                //sorting array by start date
                 self.events.sort{$0.startDate < $1.startDate}
-                
+                // by default making All events are favorite.
                 for evnt in self.events{
                     UserDefaults.standard.set(true, forKey: evnt.id)
-                    
                 }
                 
-                
+                // Once data availabe update to main que for update table view
                 DispatchQueue.main.async {
                     activityIndicator.stopAnimating()
                     UIApplication.shared.endIgnoringInteractionEvents()
@@ -86,28 +89,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }else{
                 cell.favouriteBtnPressed.setTitle("UnFavourite", for: .normal)
             }
-        
-       
-        
-        //Eevent name preparetion
-        cell.eventNameLbl.text = events[indexPath.row].title
-        //Image prepararion
-        if let imageURL = URL(string: events[indexPath.row].image) {
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: imageURL)
-                if let data = data {
-                    let image = UIImage(data: data)
-                    DispatchQueue.main.async {
-                        cell.eventImageView.image = image
+            
+            //Eevent name preparetion
+            cell.eventNameLbl.text = events[indexPath.row].title
+            //Image prepararion
+            if let imageURL = URL(string: events[indexPath.row].image) {
+                DispatchQueue.global().async {
+                    let data = try? Data(contentsOf: imageURL)
+                    if let data = data {
+                        let image = UIImage(data: data)
+                        DispatchQueue.main.async {
+                            cell.eventImageView.image = image
+                        }
                     }
                 }
             }
-        }
-        
-        //date cell preparation
-        if let timeIntervel = self.events[indexPath.row].startDate as? Int64{
-            cell.eventDateLbl.text = getDateString(time: Double(timeIntervel))
-        }
+            
+            //date cell preparation
+            if let timeIntervel = self.events[indexPath.row].startDate as? Int64{
+                cell.eventDateLbl.text = getDateString(time: Double(timeIntervel))
+            }
         }
         return cell
         
@@ -126,11 +127,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
      }
      
      }*/
-    //MARK: Image download from URL
-    
-    func imageDownload(imageURL: URL){
-        
-    }
     
     
     // MARK: -getCellInformation
@@ -144,6 +140,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return idStr
         
     }
+    
+    
     // MARK: -displayAlert
     // Global Alert display
     func displayAlert(title:String, message:String) {
@@ -158,15 +156,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
     // MARK: -getDateString
     // getting time interval and convert to data string format
     func getDateString(time:Double)->String{
-        
         let date = NSDate(timeIntervalSince1970: TimeInterval(time))
         let formatter = DateFormatter()
         formatter.dateFormat = "E, d MMM yy HH:mm"
         formatter.locale = NSLocale(localeIdentifier: "en_US") as Locale
-        //  print(formatter.string(from: date as Date))
         return formatter.string(from: date as Date)
     }
     

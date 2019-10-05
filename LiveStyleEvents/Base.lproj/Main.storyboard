@@ -62,13 +62,16 @@
                                                         <constraint firstAttribute="height" constant="30" id="WUF-mZ-POf"/>
                                                         <constraint firstAttribute="width" constant="70" id="tfI-h9-oCi"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" title="Favorite"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                    <state key="normal" title="Favorite">
+                                                        <color key="titleColor" red="0.99341553449630737" green="0.4987146258354187" blue="0.0098025249317288399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="favouriteBtnPressed:" destination="tTz-Da-wgU" eventType="touchUpInside" id="VJR-OI-WIA"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                             <constraints>
                                                 <constraint firstItem="ew0-ec-pKt" firstAttribute="leading" secondItem="JVP-4o-9ab" secondAttribute="trailing" constant="8" id="2ck-ap-mRc"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="sQt-gF-2yg" secondAttribute="bottom" constant="45" id="4HS-3a-Dnj"/>
