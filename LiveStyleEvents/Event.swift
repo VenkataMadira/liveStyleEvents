@@ -13,13 +13,13 @@ class Event: Codable {
     let title: String
     let image: String
     let startDate: Int64
-    
-    init( id : String,title : String,image : String,startDate : Int64,hasFav:Bool) {
+    //  let hasFav: Bool
+    init( id : String,title : String,image : String,startDate : Int64) {
         self.id = id
         self.title = title
         self.image  = image
         self.startDate = startDate
-        
+        // self.hasFav = hasFav
         
     }
 }

@@ -14,6 +14,8 @@
 		C746DFAF234883EF00F0199B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C746DFAD234883EF00F0199B /* LaunchScreen.storyboard */; };
 		C746DFBA234883EF00F0199B /* LiveStyleEventsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C746DFB9234883EF00F0199B /* LiveStyleEventsTests.swift */; };
 		C746DFC5234883EF00F0199B /* LiveStyleEventsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C746DFC4234883EF00F0199B /* LiveStyleEventsUITests.swift */; };
+		C746DFD323488C6F00F0199B /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C746DFD223488C6F00F0199B /* EventTableViewCell.swift */; };
+		C746DFD72348909F00F0199B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C746DFD62348909F00F0199B /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		C746DFC0234883EF00F0199B /* LiveStyleEventsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveStyleEventsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C746DFC4234883EF00F0199B /* LiveStyleEventsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStyleEventsUITests.swift; sourceTree = "<group>"; };
 		C746DFC6234883EF00F0199B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C746DFD223488C6F00F0199B /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		C746DFD62348909F00F0199B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 			children = (
 				C746DFA4234883ED00F0199B /* AppDelegate.swift */,
 				C746DFA6234883ED00F0199B /* ViewController.swift */,
+				C746DFD223488C6F00F0199B /* EventTableViewCell.swift */,
+				C746DFD62348909F00F0199B /* Event.swift */,
 				C746DFA8234883ED00F0199B /* Main.storyboard */,
 				C746DFAB234883EF00F0199B /* Assets.xcassets */,
 				C746DFAD234883EF00F0199B /* LaunchScreen.storyboard */,
@@ -256,6 +262,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C746DFD72348909F00F0199B /* Event.swift in Sources */,
+				C746DFD323488C6F00F0199B /* EventTableViewCell.swift in Sources */,
 				C746DFA7234883ED00F0199B /* ViewController.swift in Sources */,
 				C746DFA5234883ED00F0199B /* AppDelegate.swift in Sources */,
 			);
